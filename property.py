@@ -9,12 +9,12 @@ class Property(ABC):
         area: int,
         zip_code: int,
         rooms_number: int,
-        furnished: Optional[bool],
-        garden: Optional[bool],
-        garden_area: Optional[int],
-        equipped_kitchen: Optional[bool],
-        land_area: Optional[int],
-        building_state: Optional[list[str]],
+        furnished: Optional[bool] = None,
+        garden: Optional[bool] = None,
+        garden_area: Optional[int] = None,
+        equipped_kitchen: Optional[bool] = None,
+        land_area: Optional[int] = None,
+        building_state: Optional[str] = None,
     ) -> None:
 
         self.area = area
@@ -31,15 +31,15 @@ class House(Property):
         area: int,
         zip_code: int,
         rooms_number: int,
-        furnished: Optional[bool],
-        garden: Optional[bool],
-        garden_area: Optional[int],
-        equipped_kitchen: Optional[bool],
-        land_area: Optional[int],
-        building_state: Optional[list[str]],
-        open_fire: Optional[bool],
-        facades_number: Optional[int],
-        swimming_pool: Optional[bool],
+        furnished: Optional[bool] = None,
+        garden: Optional[bool] = None,
+        garden_area: Optional[int] = None,
+        equipped_kitchen: Optional[bool] = None,
+        land_area: Optional[int] = None,
+        building_state: Optional[str] = None,
+        open_fire: Optional[bool] = None,
+        facades_number: Optional[int] = None,
+        swimming_pool: Optional[bool] = None,
     ) -> None:
 
         super().__init__(
@@ -53,6 +53,7 @@ class House(Property):
             land_area,
             building_state,
         )
+        self.property_type = "HOUSE"
         self.open_fire = open_fire
         self.facades_number = facades_number
         self.swimming_pool = swimming_pool
@@ -64,14 +65,14 @@ class Apartment(Property):
         area: int,
         zip_code: int,
         rooms_number: int,
-        furnished: Optional[bool],
-        garden: Optional[bool],
-        garden_area: Optional[int],
-        equipped_kitchen: Optional[bool],
-        land_area: Optional[int],
-        building_state: Optional[list[str]],
-        terrace: Optional[bool],
-        terrace_area: Optional[int],
+        furnished: Optional[bool] = None,
+        garden: Optional[bool] = None,
+        garden_area: Optional[int] = None,
+        equipped_kitchen: Optional[bool] = None,
+        land_area: Optional[int] = None,
+        building_state: Optional[str] = None,
+        terrace: Optional[bool] = None,
+        terrace_area: Optional[int] = None,
     ) -> None:
 
         super().__init__(
@@ -85,6 +86,9 @@ class Apartment(Property):
             land_area,
             building_state,
         )
+        self.property_type = "APARTMENT"
         self.terrace = terrace
         self.terrace_area = terrace_area
 
+class Input(Property):
+    data: House | Apartment

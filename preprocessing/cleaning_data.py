@@ -2,11 +2,11 @@ import json
 import pandas as pd
 import numpy as np
 import statistics
-from predict.prediction import House
+from property import Input
+import json
 
-def preprocess(input_data:dict):
-    df = pd.read_json(input_data)
+def preprocess(input_data:Input):
+    df = pd.DataFrame.from_dict()
     input_data
     pass
 
-test = House()
